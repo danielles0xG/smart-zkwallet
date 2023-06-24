@@ -25,7 +25,7 @@ import { Deployer } from '@matterlabs/hardhat-zksync-deploy';
 
 export default async function (hre: HardhatRuntimeEnvironment) {
   // Private key of the account used to deploy
-  const wallet = new Wallet('0x501a6ebf002be33b2378b72affd602419ec36c2aa14fe5fbc80664ef13ec1005');
+  const wallet = new Wallet('PK');
   const deployer = new Deployer(hre, wallet);
   const factoryArtifact = await deployer.loadArtifact('AAFactory');
   const aaArtifact = await deployer.loadArtifact('TwoUserMultisig');

@@ -8,7 +8,7 @@ const AA_FACTORY_ADDRESS = "0x9E3505260eB62e61A04a2cBDea257305E9126d5a";
 export default async function (hre: HardhatRuntimeEnvironment) {
   const provider = new Provider("https://testnet.era.zksync.dev");
   // Private key of the account used to deploy
-  const wallet = new Wallet("0x501a6ebf002be33b2378b72affd602419ec36c2aa14fe5fbc80664ef13ec1005").connect(provider);
+  const wallet = new Wallet("PK").connect(provider);
   const factoryArtifact = await hre.artifacts.readArtifact("AAFactory");
 
   const aaFactory = new ethers.Contract(
