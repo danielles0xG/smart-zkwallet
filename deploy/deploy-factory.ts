@@ -1,23 +1,5 @@
 import { ContractFactory } from "zksync-web3";
-
-// const contractFactory = new ContractFactory(abi, bytecode, initiator, "createAccount");
-// const aa = await contractFactory.deploy(...args);
-// await aa.deployed();
-/**
- * import { utils } from "zksync-web3";
-
-    // here the `tx` is a `TransactionRequest` object from `zksync-web3` SDK.
-    // and the zksyncProvider is the `Provider` object from `zksync-web3` SDK connected to zkSync network.
-    tx.from = aaAddress;
-    tx.customData = {
-    ...tx.customData,
-    customSignature: aaSignature,
-    };
-    const serializedTx = utils.serialize({ ...tx });
-
-    const sentTx = await zksyncProvider.sendTransaction(serializedTx);
- */
-
+import "dotenv/config";
 import { utils, Wallet } from 'zksync-web3';
 import * as ethers from 'ethers';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
@@ -25,7 +7,7 @@ import { Deployer } from '@matterlabs/hardhat-zksync-deploy';
 
 export default async function (hre: HardhatRuntimeEnvironment) {
   // Private key of the account used to deploy
-  const wallet = new Wallet('PK');
+  const wallet = new Wallet(`${process.env.WALLET_PRIVATE_KEY}`);
   const deployer = new Deployer(hre, wallet);
   const factoryArtifact = await deployer.loadArtifact('AAFactory');
   const aaArtifact = await deployer.loadArtifact('TwoUserMultisig');
